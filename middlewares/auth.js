@@ -4,7 +4,6 @@ const isLogin = (req, res, next) => {
     req.flash('alertStatus', 'danger');
     res.redirect('/admin/signin');
   } else {
-    console.log('Bagus mas');
     next();
   }
 };

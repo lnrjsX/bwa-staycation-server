@@ -307,6 +307,7 @@ module.exports = {
         categorys,
         items,
         action: 'show image',
+        user: req.session.user,
       });
     } catch (error) {
       res.redirect('/admin/item');
