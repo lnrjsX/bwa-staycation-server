@@ -1,0 +1,75 @@
+<div class="tab-pane fade show active" id="show-feature" role="tabpanel" aria-labelledby="show-feature-tab">
+   <div class="card mb-4 mt-3">
+      <div class="card-body">
+         <div class="row">
+            <div class="col-md-5">
+               <form method="POST" action="/admin/item/add/feature" enctype="multipart/form-data">
+                  <div class="form-group">
+                     <label for="name">Nama</label>
+                     <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="name">QTY</label>
+                     <input type="number" class="form-control" name="qty" placeholder="Masukkan qty" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="name">Image</label>
+                     <input type="file" class="form-control" name="image" required>
+                  </div>
+                  <input type="hidden" name="itemId" value="<%= itemId %>">
+                  <a href="/admin/item" class="btn btn-secondary">&laquo; Kembali</a>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+               </form>
+            </div>
+            <div class="col-md-7">
+               <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                     <thead>
+                        <tr>
+                           <th>No</th>
+                           <th>Nama</th>
+                           <th>QTY</th>
+                           <th>Image</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <% features.forEach((feature, i)=> { %>
+                           <tr>
+                              <td>
+                                 <%= ++i %>
+                              </td>
+                              <td>
+                                 <%= feature.name %>
+                              </td>
+                              <td>
+                                 <%= feature.qty %>
+                              </td>
+                              <td>
+                                 <img src="http://localhost:3000/<%= feature.imageUrl %> " alt="imageUrl" width="70px">
+
+                              </td>
+                              <td>
+                                 <form action="/admin/item/delete/feature/<%= feature._id %>?_method=DELETE"
+                                    method="POST">
+                                    <a href="javascirpt:void(0))" data-id="<%= feature._id %>"
+                                       data-name="<%= feature.name %>" data-qty="<%= feature.qty %>"
+                                       class="btn btn-warning btn-circle btn-sm button-update">
+                                       <i class="fas fa-edit child-button-update"></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-danger btn-circle btn-sm">
+                                       <i class="fas fa-trash"></i>
+                                    </button>
+                                 </form>
+                              </td>
+                           </tr>
+                           <% }) %>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- DataTales Example -->

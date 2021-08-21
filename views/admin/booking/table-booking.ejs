@@ -1,0 +1,64 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4 ">
+   <div class="card-header py-3 bg-dark">
+      <a href="/admin/booking" class="btn btn-warning">&laquo; Back</a>
+   </div>
+   <div class="card-body bg-dark text-light">
+      <div class="table-responsive ">
+         <table class="table thead-dark table-striped table-dark" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+               <tr>
+                  <th>No</th>
+                  <th>Invoice</th>
+                  <th>Date</th>
+                  <th>Title</th>
+                  <th>Nama Member</th>
+                  <th>Status</th>
+                  <th>Action</th>
+               </tr>
+            </thead>
+            <tbody>
+               <% bookings.forEach((booking, i)=> { %>
+                  <tr>
+                     <td>
+                        <%= ++i %>
+                     </td>
+                     <td>
+                        #<%= booking.invoice %>
+                     </td>
+                     <td>
+                        <%= booking.bookingStartDate.toLocaleString().split(',')[0] %> s/d <%=
+                              booking.bookingEndDate.toLocaleString().split(',')[0] %>
+                     </td>
+                     <td>
+                        <%= booking.itemId.title %>
+                     </td>
+                     <td>
+                        <%= booking.memberId.firstName %>
+                     </td>
+                     <% if (booking.payments.status=='Accept' ) { %>
+                        <td class="text-success">
+                           <%= booking.payments.status %>
+                        </td>
+                        <% } else if (booking.payments.status=='Reject' ) {%>
+                           <td class="text-danger">
+                              <%= booking.payments.status %>
+                           </td>
+                           <% } else { %>
+                              <td class="text-secondary">
+                                 <%= booking.payments.status %>
+                              </td>
+                              <% } %>
+                                 <td>
+                                    <a href="/admin/booking/<%= booking._id %>"
+                                       class="btn btn-success btn-circle btn-sm button-update">
+                                       <i class="fas fa-eye"></i>
+                                    </a>
+                                 </td>
+                  </tr>
+                  <% }) %>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>

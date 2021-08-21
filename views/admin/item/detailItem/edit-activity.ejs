@@ -1,0 +1,37 @@
+<!-- Modal -->
+<div class="modal fade" id="editModalActivity" tabindex="-1" aria-labelledby="editModalActivityLabel"
+   aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="editModalActivityLabel">Ubah Bank</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <form method="POST" action="/admin/item/update/activity?_method=PUT" enctype="multipart/form-data">
+            <div class="modal-body">
+               <div class="form-group">
+                  <label for="namaBank">Nama</label>
+                  <input type="text" class="form-control nama" name="nama" placeholder="Masukkan Nama" required>
+               </div>
+               <div class="form-group">
+                  <label for="nomorRekening">Type</label>
+                  <input type="text" class="form-control type" name="type" placeholder="Masukkan type" required>
+               </div>
+               <div class="form-group">
+                  <label for="name">Image</label>
+                  <input type="file" class="form-control image" name="image">
+                  <span>Pilih gambar untuk update image</span>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <input type="hidden" name="itemId" value="<%= itemId %>">
+               <input type="hidden" class="id" name="id">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Ubah</button>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
